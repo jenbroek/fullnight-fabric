@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "${mod.id}",
+	"version": "${mod.version}",
+	"name": "${mod.name}",
+	"description": "${mod.description}",
+
+	"authors": [
+		"jenbroek"
+	],
+	"contact": {
+		"sources": "https://github.com/jenbroek/${mod.id}-fabric"
+	},
+	"license": "BSD-3-Clause",
+
+	"environment": "client",
+	"mixins": [
+		"${mod.id}.mixins.json"
+	],
+	"entrypoints": {
+		"client": [
+			"${mod.pkg}.ClientInitializer"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=${versions.fabricLoader}",
+		"fabric": "^${versions.fabricApi}",
+		"minecraft": "~${versions.minecraft}",
+		"java": ">=${versions.java}"
+	}
+}
