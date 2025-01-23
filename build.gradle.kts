@@ -9,14 +9,14 @@ dependencies {
 	modImplementation(libs.fabric.api)
 }
 
-fun String.fromCamelCase(sep: String) = replace("(?<=.)(?=\\p{Upper})".toRegex(), sep).lowercase()
+fun String.toCase(sep: String) = replace("(?<=\\p{Lower})(?=\\p{Upper})".toRegex(), sep).lowercase()
 
 val modGroup: String by project
 val modName: String by project
 val modVersion: String by project
 val modDescription: String by project
 
-val modId = modName.fromCamelCase("-")
+val modId = modName.toCase("-")
 
 group = modGroup
 version = "${modVersion}+${libs.versions.minecraft.get()}"
@@ -38,7 +38,7 @@ tasks {
 					"description" to modDescription,
 					"version" to modVersion,
 					"id" to modId,
-					"pkg" to "${modGroup}.${modName.fromCamelCase("_")}",
+					"pkg" to "${modGroup}.${modName.toCase("_")}",
 				),
 				"versions" to mapOf(
 					"java" to libs.versions.java.get(),
