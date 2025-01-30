@@ -9,7 +9,9 @@ dependencies {
 	modImplementation(libs.fabric.api)
 }
 
-fun String.toCase(sep: String) = replace("(?<=\\p{Lower})(?=\\p{Upper})".toRegex(), sep).lowercase()
+val pat = "(?<=\\p{Lower})(?=\\p{Upper})".toRegex()
+fun String.toCase(sep: String) = replace(pat, sep).lowercase()
+fun String.toClassName() = split(pat).joinToString("", transform={ it.lowercase().capitalize() })
 
 val modGroup: String by project
 val modName: String by project
@@ -39,6 +41,7 @@ tasks {
 					"version" to modVersion,
 					"id" to modId,
 					"pkg" to "${modGroup}.${modName.toCase("_")}",
+					"class" to modName.toClassName(),
 				),
 				"versions" to mapOf(
 					"java" to libs.versions.java.get(),

@@ -9,7 +9,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import org.lwjgl.glfw.GLFW;
 
-public class ClientInitializer implements ClientModInitializer {
+public class ClientFullnight implements ClientModInitializer {
 
 	public static boolean ON = false;
 

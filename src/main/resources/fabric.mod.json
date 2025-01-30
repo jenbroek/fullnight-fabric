@@ -19,7 +19,7 @@
 	],
 	"entrypoints": {
 		"client": [
-			"${mod.pkg}.ClientInitializer"
+			"${mod.pkg}.Client${mod.class}"
 		]
 	},
 	"depends": {

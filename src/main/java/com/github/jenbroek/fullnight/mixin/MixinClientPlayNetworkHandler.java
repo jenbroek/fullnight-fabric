@@ -1,6 +1,6 @@
 package com.github.jenbroek.fullnight.mixin;
 
-import com.github.jenbroek.fullnight.ClientInitializer;
+import com.github.jenbroek.fullnight.ClientFullnight;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommonNetworkHandler;
 import net.minecraft.client.network.ClientConnectionState;
@@ -22,14 +22,14 @@ abstract class MixinClientPlayNetworkHandler extends ClientCommonNetworkHandler 
 
 	@Inject(method = "onGameJoin", at = @At("TAIL"))
 	public void onGameJoin(CallbackInfo ci) {
-		if (ClientInitializer.ON) {
+		if (ClientFullnight.ON) {
 			super.client.player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, -1, 0, false, false));
 		}
 	}
 
 	@Inject(method = "onPlayerRespawn", at = @At("TAIL"))
 	public void onPlayerRespawn(CallbackInfo ci) {
-		if (ClientInitializer.ON) {
+		if (ClientFullnight.ON) {
 			super.client.player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, -1, 0, false, false));
 		}
 	}

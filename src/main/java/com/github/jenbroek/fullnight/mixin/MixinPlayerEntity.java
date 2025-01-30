@@ -1,6 +1,6 @@
 package com.github.jenbroek.fullnight.mixin;
 
-import com.github.jenbroek.fullnight.ClientInitializer;
+import com.github.jenbroek.fullnight.ClientFullnight;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -20,7 +20,7 @@ abstract class MixinPlayerEntity extends LivingEntity {
 
 	@Override
 	public boolean addStatusEffect(StatusEffectInstance statusEffectInstance, @Nullable Entity entity) {
-		if (ClientInitializer.ON && StatusEffects.NIGHT_VISION.matches(statusEffectInstance.getEffectType()) && this.hasStatusEffect(StatusEffects.NIGHT_VISION)) {
+		if (ClientFullnight.ON && StatusEffects.NIGHT_VISION.matches(statusEffectInstance.getEffectType()) && this.hasStatusEffect(StatusEffects.NIGHT_VISION)) {
 			return true;
 		}
 		return super.addStatusEffect(statusEffectInstance, entity);
